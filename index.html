@@ -201,7 +201,7 @@
 
       function login(email, password) {
         $.ajax({
-          url: 'https://neu-ai-instructor.aiiot.website/api.php',
+          url: 'http://neu-ai-instructor.aiiot.website/api.php',
           type: 'POST',
           data: {
             action: 'login',
@@ -233,7 +233,7 @@
         formData.append('photo', photo);
 
         $.ajax({
-          url: 'https://neu-ai-instructor.aiiot.website/api.php',
+          url: 'http://neu-ai-instructor.aiiot.website/api.php',
           type: 'POST',
           data: formData,
           processData: false,
