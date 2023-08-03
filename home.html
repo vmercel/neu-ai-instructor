@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Template</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Header Row -->
+  <header class="container-fluid " style="background-color: #f8f9fa;">
+    <div class="row">
+      <div class="col-6">
+        <img src="assets/RCAIoT_logo.png" alt="Company Logo" style="width:400px; padding-top: 10px;">
+      </div>
+      <div class="col-6 text-right">
+       <div class="row">
+        <div class="col-6" style="float:right">
+          <img src="" alt="User Profile Image" class="rounded-circle" id="userPhoto" style="height:75px; float: right;">
+        </div>
+        <div class="col-6" style="float:left">
+          <span>Logged in as <br><h3 class="text-primary" id="userName"></h3></span>
+        </div>
+       </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Section Row -->
+  <!-- Main Section Row -->
+  <main class="container mt-3">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-2" style="background-color:whitesmoke;">
+        <ul class="nav flex-column">
+          <!-- Sidebar tabs (Replace the "#" links with actual content) -->
+          <li class="nav-item">
+            <a class="nav-link active" data-tab="classroom" href="#"><i class="fas fa-chalkboard"></i> Classroom</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-tab="chatroom" href="#"><i class="fas fa-cog"></i> Chatroom</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-tab="courses" href="#"><i class="fas fa-book"></i> Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-tab="grades" href="#"><i class="fas fa-chart-bar"></i> Grades</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-tab="timetable" href="#"><i class="fas fa-calendar-alt"></i> Timetable</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-tab="messages" href="#"><i class="fas fa-envelope"></i> Messages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-tab="settings" href="#"><i class="fas fa-cog"></i> Settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </li>
+        </ul>
+      </div>
+
+
+
+      <!-- Chat Area -->
+
+      <div class="col-10">
+        <div class="tab-contents" id="classroom-content">
+          <!-- Content for Classroom tab -->
+          <div class="row">
+            <div class="col-7">
+              <div class="chat-section">
+                <h1>Learning Area</h1>
+                <div class="row myselectG"
+                  style="display: flex; flex-direction: row;justify-content: space-around; background-color: greenyellow; border-radius: 20px; padding: 5px; margin: 10px;">
+                  <div class="column">
+                    <div>
+                      <label for="course">Course:&NonBreakingSpace;</label>
+                      <select id="course" name="course" style="width: 200px;">
+                        <option value="">Select Course</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label for="topic">Lecture:</label>
+                      <select id="topic" name="topic" style="width: 200px;">
+                        <option value="">Select Lecture</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="column" style="float: right;">
+                    <div>
+                      <button class="set-button btn btn-primary" id="set-button"><i class="fas fa-cog"></i> Set</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="chat-history" id="chat-history">
+                  <!-- Chat history appears here -->
+                </div>
+                <br>
+                <div class="send-message-box">
+                  <!-- <textarea rows="4" id="messageTextarea" placeholder="Type your message and press Enter"></textarea> -->
+                  <textarea rows="1" oninput="adjustTextareaHeight(this)" id="messageTextarea" placeholder="Type your message and press Enter"></textarea>
+                  <div class="send-icon-container">
+                    <i id="sendIcon" class="fas fa-paper-plane"></i>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-5">
+              <div class="instructions-section">
+                <h1>Instructions</h1>
+                <div class="countdown-timer">
+                  <span class="timer-hours">00</span>:
+                  <span class="timer-minutes">00</span>:
+                  <span class="timer-seconds">00</span>
+                </div>
+                <div class="buttons" style="display:flex; flex-direction:row; justify-content: space-around;">
+                  <button class="start-button btn btn-primary"><i class="fas fa-play"></i> Start</button>
+                  <button class="skip-button btn btn-primary"><i class="fas fa-arrow-alt-circle-right"></i>
+                    Next</button>
+
+                </div>
+                <br><br>
+                <div class="instruction">
+                  <div class="buttons" style="display:flex; flex-direction:row; justify-content: space-around;">
+                    <div id="buttonContainer"></div>
+                    <div id="submit-button"></div>
+                  </div>
+
+
+
+                  <div class="instruction-messages">
+                    <!-- Instruction messages appear here -->
+                    <div class="welcome-message">
+                      <p>
+                      <h3>Welcome!</h3>
+                      </p>
+                      <p>I'm excited to be your virtual teacher. Together, we'll explore a wide range of topics</p>
+                      <p>Feel free to ask questions, seek assistance, and share your thoughts. </p>
+                      <p>Get ready to delve into a new experience, challenge your mind, and expand your understanding of
+                        the world in this virtual classroom!</p>
+                      <p>Best regards,<br>NEUGPT</p>
+                    </div>
+                  </div>
+                  <img src="https://flashlearners.com/wp-content/uploads/2023/07/chat-gpt.jpg" alt="Instruction Media"
+                    class="instruction-image">
+
+                  <!-- <button id="playButton">Play Video</button>
+                          <button id="displayButton">Display Photo</button> -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="tab-contents" id="chatroom-content">
+          <!-- Content for Classroom tab -->
+          <div class="row">
+            <div class="col-7">
+              <div class="chatr-section">
+                <h1>Chatroom</h1>
+        
+                <div class="chatroom-chat-history" id="chatroom-chat-history" style="height: 400px; overflow-y: auto; scroll-margin-top: auto;">
+                  <!-- Chatroom Chat history appears here -->
+                </div>
+                <br>
+                <div class="send-chatroom-message-box">
+                  <textarea id="chatroom-message-textarea" placeholder="Type your message and press Enter"></textarea>
+                </div>
+              </div>
+        
+            </div>
+            <div class="col-5">
+              <div class="instructionsr-section">
+                <h1>Logged in Users</h1>
+        
+                <div class="logged-in-users" id="logged-in-users">
+                  <!-- Logged-in users list appears here -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="tab-contents" id="courses-content">
+          <!-- Content for Courses tab -->
+          <div class="row">
+            <div class="col-8">
+              <div class="chat-section">
+                <h1>Courses</h1>
+                <div class="mytext" style="margin-bottom: 30px; color: #5e60dc; font-size: large;">Subscribe to a course
+                  by clicking in the checkbox</div>
+                <div id="courseList" class="card-group"></div>
+              </div>
+              <div class="col-4">
+                <div class="instructions-section">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+        <div class="tab-contents" id="grades-content">
+          <!-- Content for Grades tab -->
+          <div class="row">
+            <div class="col-8">
+              <div class="chat-section">
+                <h1>Grades</h1>
+                <ul class="nav nav-tabs" id="gradesTabs">
+                  <li class="nav-item">
+                    <a class="nav-link-2 active" id="courseGradesTab" data-toggle="tab"
+                      href="#dashboard-container">Course
+                      Grades</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link-2" id="semesterGradesTab" data-toggle="tab"
+                      href="#semesterGradesContainer">Semester Grades</a>
+                  </li>
+                </ul>
+
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="dashboard-container">
+                    <!-- Content for Course Grades tab goes here -->
+                    <div class="row myselect"
+                      style="display: flex; flex-direction: row;justify-content: space-around; background-color: rgb(222, 217, 235); border-radius: 20px; padding: 5px; margin: 10px;">
+                      <div class="column">
+                        <div>
+                          <label for="courseG">Course:&NonBreakingSpace;</label>
+                          <select id="courseG" name="courseG" style="width: 200px;">
+                            <option value="">Select Course</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label for="topicG">Lecture:</label>
+                          <select id="topicG" name="topicG" style="width: 200px;">
+                            <option value="">Select Lecture</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="column" style="float: right;">
+                        <div>
+                          <button class="set-button btn btn-primary" id="set-button">Show</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="dashboard-container">
+                      <!-- Your existing card elements for Course Grades content -->
+                      <div class="card">
+                        <div class="card-icon">
+                          <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="card-content">
+                          <h2>Correctness Level</h2>
+                          <p id="accuracyScore">Score: </p>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-icon">
+                          <i class="fas fa-stopwatch"></i>
+                        </div>
+                        <div class="card-content">
+                          <h2>Topic Relevance</h2>
+                          <p id="promptEfficiencyScore">Score: </p>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-icon">
+                          <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="card-content">
+                          <h2>Time Efficiency</h2>
+                          <p id="timeEfficiencyScore">Score: </p>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-icon">
+                          <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="card-content">
+                          <h2>Total Grade</h2>
+                          <p id="totalGradeScore">Score: </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane-2 fade" id="semesterGradesContainer" role="tabpanel"
+                    aria-labelledby="semesterGradesTab">
+                    <!-- Content for Semester Grades tab goes here -->
+                    <div class="dashboard-container">
+                      <!-- Your existing card elements for Course Grades content -->
+                      <div class="cardrow">
+                        <div class="card">
+                          <div class="card-icon">
+                            <i class="far fa-calendar-alt"></i>
+                          </div>
+                          <div class="card-content">
+                            <h2>Weekly Evaluation</h2>
+                            <p id="timeEfficiencyScore">Score: </p>
+                          </div>
+                        </div>
+                        <div class="card">
+                          <div class="card-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                          </div>
+                          <div class="card-content">
+                            <h2>Mid-Term Exam</h2>
+                            <p id="totalGradeScore">Score: </p>
+                          </div>
+                        </div>
+                        <div class="card">
+                          <div class="card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                          </div>
+                          <div class="card-content">
+                            <h2>Final Exam</h2>
+                            <p id="timeEfficiencyScore">Score: </p>
+                          </div>
+                        </div>
+                        <div class="card">
+                          <div class="card-icon">
+                            <i class="fas fa-chart-pie"></i>
+                          </div>
+                          <div class="card-content">
+                            <h2>Total Grade</h2>
+                            <p id="totalGradeScore">Score: </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="card">
+                        <div class="card-icon">
+                          <i class="fas fa-comment"></i>
+                        </div>
+                        <div class="card-content">
+                          <h2>Remark</h2>
+                          <p id="accuracyScore">Failed </p>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-icon">
+                          <i class="fas fa-flag-checkered"></i>
+                        </div>
+                        <div class="card-content">
+                          <h2>Final Grade</h2>
+                          <p id="promptEfficiencyScore"> FF </p>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="instructions-section">
+                <h2>Final Score</h2>
+                <div class="progress-bars" id="progressBarsContainer">
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="tab-contents" id="timetable-content">
+          <!-- Content for Timetable tab -->
+          <div class="chat-section">
+            <h1>Your Time table</h1>
+            <div id="timetable">
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="tab-contents" id="messages-content">
+          <!-- Content for Messages tab -->
+          <div class="chat-section">
+            <div class="messagingM">
+              <div class="tabsM">
+                <button class="tab-btnM active" onclick="showTab('Unread')">Unread: 2</button>
+                <button class="tab-btnM" onclick="showTab('Inbox')">Inbox: 5</button>
+                <button class="tab-btnM" onclick="showTab('Sent')">Sent: 2</button>
+                <button class="tab-btnM" onclick="showTab('Spam')">Spam: 1</button>
+                <button class="create-btnM" onclick="showCreateMessageCard()">Create Message</button>
+              </div>
+
+              <div class="contentM" id="content">
+                <!-- List of messages will be displayed here -->
+              </div>
+
+              <div class="cardM" id="messageCard">
+                <!-- The full message card will be displayed here -->
+              </div>
+
+              <div class="cardM" id="createMessageCard">
+                <!-- The create message card will be displayed here -->
+                <h2>Create Message</h2>
+                <form id="createMessageForm">
+                  <label for="to">To:</label>
+                  <input type="text" id="to" required>
+
+                  <label for="subject">Subject:</label>
+                  <input type="text" id="subject" required>
+
+                  <label for="message">Message:</label>
+                  <textarea id="message" rows="4" required></textarea>
+
+                  <label for="attachment">Attachment:</label>
+                  <input type="file" id="attachment">
+
+                  <div class="buttonsM">
+                    <button type="button" class="cancel-btn" onclick="cancelCreateMessage()">Cancel</button>
+                    <button type="button" class="send-btn" onclick="sendMessage()">Send</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="tab-contents" id="settings-content">
+          <!-- Content for Settings tab -->
+          <div class="cardS">
+            <div class="cardS-body">
+              <h5 class="cardS-title">API Key</h5>
+              <p class="cardS-text" id="api-key-status"></p>
+              <p class="cardS-text" id="api-key-preview" style="background-color: #f9f6f0;"></p>
+              <form id="api-key-form">
+                <div class="form-group">
+                  <label for="api-key-input">Register/Update Your API Key:</label>
+                  <input type="text" class="form-control" id="api-key-input" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </form>
+              <div class="api-key-link">
+                Don't have a key yet? <a href="https://platform.openai.com" target="_blank" id="get-api-key-link">Find out how to get one</a>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Styled card with API key instructions -->
+          <div id="api-key-instructions-card" class="cardS">
+            <div class="cardS-body">
+              <h5 class="cardS-title">To get an API key:</h5>
+              <ol>
+                <li>Go to <a href="https://platform.openai.com" target="_blank">platform.openai.com</a> and sign in with an OpenAI account.</li>
+                <li>Click your profile icon at the top-right corner of the page and select "View API Keys."</li>
+                <li>Click "Create New Secret Key" to generate a new API key.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Row -->
+  <footer class="container-fluid mt-3" style="background-color: beige;">
+    <div class="row">
+      <div class="col-4">
+        <p><img src="assets/AIRI_logo.png" alt="company logo" style="width:200px"></p>
+        <p><img src="assets/RCAIoT_logo.png" alt="company logo" style="width:300px"></p>
+        <p>Research Center for AI and IoT<br>
+          We Specialize in designing AI-based solutions for smart societies</p>
+      </div>
+      <div class="col-4">
+        <p class="footer-heading">Contact us</p>
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i> Research Center for AI and IoT, AI and Robotics Institute, Near East
+            University, 99138 Mersin 10, TRNC</li>
+          <li><i class="fas fa-phone"></i> +90 542 852 09 85</li>
+        </ul>
+      </div>
+      <div class="col-4">
+        <p class="footer-heading">Services</p>
+        <ul>
+          <li><i class="fas fa-home"></i> Smart Home Solutions</li>
+          <li><i class="fas fa-graduation-cap"></i> Smart Education Solutions</li>
+          <li><i class="fas fa-medkit"></i>Smart Healthcare Solutions</li>
+          <li><i class="fas fa-chalkboard-teacher"></i> Training</li>
+          <li><i class="fas fa-handshake"></i> Consultancy</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="scripts.js"></script>
+  <script>
+    // Function to send chat message to the server
+    const udata = JSON.parse(sessionStorage.user);
+      const cse = sessionStorage.getItem('courseToLearn');
+      var myuid = udata.uid;
+      console.log('USER ID: ', myuid);
+      console.log('COURSE ID: ', cse);
+
+    function sendChatMessage(message) {
+      console.log('SEND chat CALLED');
+
+      $.ajax({
+        url: 'api.php',
+        method: 'POST',
+        data: {
+          action: 'sendMessage',
+          message: message,
+          userId: myuid,
+          courseId: cse
+        },
+        success: function(response) {
+          // Update chat history
+          console.log(response);
+          const chatHistory = $('#chatroom-chat-history');
+          chatHistory.empty(); 
+          chatHistory.append(formatChatMessage(response.messageHistory));
+          chatHistory.scrollTop(chatHistory[0].scrollHeight);
+  
+          // Update logged-in users
+          const loggedInUsers = $('#logged-in-users');
+          loggedInUsers.html(formatLoggedInUsers(response.loggedInUsers));
+        },
+        error: function() {
+          alert('Error sending message.');
+        }
+      });
+    }
+  
+    // Format chat message HTML
+    function formatChatMessage(messageHistory) {
+  const currentUser = JSON.parse(sessionStorage.getItem('user'));
+
+  return messageHistory.map(message => {
+    const isCurrentUser = message.user.name === currentUser.name;
+    const messagePosition = isCurrentUser ? 'right' : 'left';
+    const avatarPosition = isCurrentUser ? 'right' : 'left';
+
+    let messageContent = `<span class="message-content">${message.message}</span>`;
+    let nameContent = `<span class="message-author">${message.user.name}</span>`;
+    let avatarContent = `<img src="${message.user.photo}" alt="${message.name} Avatar" class="avatar ${avatarPosition}">`;
+
+    if (messagePosition === 'left') {
+      return `<p class="${messagePosition}-message">
+                ${avatarContent}
+                ${nameContent}
+                ${messageContent}
+              </p>`;
+    } else {
+      return `<p class="${messagePosition}-message">
+                ${messageContent}
+                ${nameContent}
+                ${avatarContent}
+              </p>`;
+    }
+  }).join('\n');
+}
+  
+    // Format logged-in users HTML
+    function formatLoggedInUsers(users) {
+      let html = '';
+      users.forEach(user => {
+        html += `<p><img src="${user.photo}" alt="${user.name} Avatar" class="avatar"> ${user.name}</p>`;
+      });
+      return html;
+    }
+  
+    // Send chat message to server on Enter key press
+    const messageTextarea = $('#chatroom-message-textarea');
+    messageTextarea.on('keyup', function(event) {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        const message = messageTextarea.val().trim();
+        if (message) {
+          console.log('MESSAGE TO SEND IS: ', message);
+          sendChatMessage(message);
+          messageTextarea.val('');
+        }
+      }
+    });
+  
+
+    // Load initial chat history and logged-in users
+    $(document).ready(function() {
+      // Update chat history
+      // const chatHistory = $('#chatroom-chat-history');
+      // initialChatHistory.forEach(message => {
+      //   chatHistory.append(formatChatMessage(message));
+      // });
+      // chatHistory.scrollTop(chatHistory[0].scrollHeight);
+  
+      // // Update logged-in users
+      // const loggedInUsers = $('#logged-in-users');
+      // loggedInUsers.html(formatLoggedInUsers(initialLoggedInUsers));
+
+      $.ajax({
+        url: 'api.php',
+        method: 'POST',
+        data: {
+          action: 'sendMessage',
+          message: 'init',
+          userId: myuid,
+          courseId: cse
+        },
+        success: function(response) {
+  // Update chat history
+  console.log(response);
+  const chatHistory = $('#chatroom-chat-history');
+  const isScrolledToBottom = chatHistory[0].scrollHeight - chatHistory.scrollTop() === chatHistory.outerHeight();
+  chatHistory.append(formatChatMessage(response.messageHistory));
+
+  // Scroll to the bottom if already at the bottom before adding new messages
+  if (isScrolledToBottom) {
+    chatHistory.animate({ scrollTop: chatHistory.prop("scrollHeight") }, 300);
+  }
+
+  // Update logged-in users
+  const loggedInUsers = $('#logged-in-users');
+  loggedInUsers.html(formatLoggedInUsers(response.loggedInUsers));
+},
+        error: function() {
+          alert('Error sending message.');
+        }
+      });
+
+
+    });
+  </script>
+
+
+  <style>
+    /* Hide all tab contents by default */
+    .tab-content>.tab-pane-2 {
+      display: none;
+    }
+
+    /* Display the active tab content */
+    .tab-content>.active {
+      display: block;
+    }
+
+    .nav-link-2 {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-link-2:hover {
+      background-color: #6891b6;
+    }
+
+    .nav-link-2.active {
+      background-color: #c9ebde;
+    }
+
+
+    /* FOR COURSES CARD */
+    .cardc {
+      margin-bottom: 10px;
+      margin-right: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+
+    .cardc-body {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      height: 100px;
+      width: 200px;
+      border-radius: 10px;
+      background-color: blanchedalmond;
+    }
+
+    .cardc-body .fa {
+      margin-right: 10px;
+      font-size: 24px;
+      color: #a7a8db;
+      /* Replace with your desired color */
+    }
+
+    .cardc-body .checkbox-container {
+      margin-left: auto;
+    }
+
+    .cardc-header {
+      background-color: #F5F5F5;
+      /* Replace with your desired background color */
+      padding: 10px;
+      font-weight: bold;
+    }
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function adjustTextareaHeight(textarea) {
+      textarea.style.height = 'auto'; // Reset the height
+      textarea.style.height = textarea.scrollHeight + 'px'; // Set the height to fit the content
+    }
+  </script>
+  <script>
+    // JavaScript code to handle tab switching
+    $(document).ready(function () {
+      // When a tab is clicked, switch to the corresponding tab content
+      $(".nav-link-2").on("click", function (e) {
+        // Get the target tab's href attribute
+        e.preventDefault(); // Prevent the default link behavior
+        const targetTab = $(this).attr("href");
+        const instSec = document.querySelector(".instructions-section");
+        instSec.style.display = "none";
+        // Hide all tab contents
+        $(".tab-pane-2").removeClass("show active");
+
+
+        // Show the target tab content
+        $(targetTab).addClass("show active");
+      });
+    });
+  </script>
+
+  <script>
+    // JavaScript code for tab functionality
+    $(document).ready(function () {
+      // Get the active tab from session storage or set default to 'classroom'
+      var activeTab = sessionStorage.getItem('activeTab') || 'classroom';
+
+      // Show the corresponding tab content
+      $('.tab-contents').hide();
+      $('#' + activeTab + '-content').show();
+
+      // Handle tab clicks
+      $('.nav-link').on('click', function (e) {
+        e.preventDefault();
+        var tabId = $(this).data('tab');
+        $('.tab-contents').hide();
+        $('#' + tabId + '-content').show();
+        // Store the active tab in session storage
+        sessionStorage.setItem('activeTab', tabId);
+      });
+
+    });
+
+// JavaScript code for logout functionality
+function logout() {
+  // Get the email from sessionStorage
+  var email = sessionStorage.getItem('user');
+
+  // Clear user data from session storage
+  sessionStorage.clear();
+
+  // Call API to perform logout
+  $.ajax({
+    url: 'api.php',
+    method: 'POST',
+    data: {
+      action: 'logout',
+      email: email
+    },
+    success: function(response) {
+      // Redirect to index.html after successful logout
+      window.location.href = 'index.html';
+    },
+    error: function(xhr, status, error) {
+      // Handle error if necessary
+      console.error(error);
+      // Redirect to index.html regardless of the API call result
+      window.location.href = 'index.html';
+    }
+  });
+}
+  </script>
+
+
+
+
+
+
+
+  <script>
+    // JavaScript code to dynamically add Semester Grades cards
+    $(document).ready(function () {
+      // Example data for Semester Grades (Replace this with your dynamic data)
+      const weeklyQuizzesData = [
+        { cardTitle: 'Quiz 1', icon: 'fas fa-book', scoreId: 'quiz1Score' },
+        // Add more data for weekly quizzes as needed...
+      ];
+
+      const midTermExamData = [
+        { cardTitle: 'Mid-Term', icon: 'fas fa-code', scoreId: 'midTermScore' },
+        // Add more data for mid-term exams as needed...
+      ];
+
+      const finalExamData = [
+        { cardTitle: 'Final Exam', icon: 'fas fa-language', scoreId: 'finalExamScore' },
+        // Add more data for final exams as needed...
+      ];
+
+      const totalData = [
+        { cardTitle: 'Total Grade', icon: 'fas fa-rocket', scoreId: 'totalScore' },
+        // Add more data for the total grade as needed...
+      ];
+
+      // Function to create a Semester Grades card
+      function createSemesterGradesCard(data) {
+        const card = $('<div>').addClass('card').css('background-color', '#9168ec');
+        const cardTitle = $('<div>').addClass('title').text(data.cardTitle);
+        const icon = $('<i>').addClass(data.icon);
+        const score = $('<div>').addClass('value').attr('id', data.scoreId).text('Score: ');
+
+        card.append(cardTitle, icon, score);
+        return card;
+      }
+
+      // Get the containers for Semester Grades cards
+      const weeklyQuizzesGrid = $('#weeklyQuizzesGrid');
+      const midTermExamGrid = $('#midTermExamGrid');
+      const finalExamGrid = $('#finalExamGrid');
+      const totalGrid = $('#totalGrid');
+
+      // Add Weekly Quizzes cards to the container
+      for (const quizData of weeklyQuizzesData) {
+        const card = createSemesterGradesCard(quizData);
+        weeklyQuizzesGrid.append(card);
+      }
+
+      // Add Mid-Term Exam cards to the container
+      for (const examData of midTermExamData) {
+        const card = createSemesterGradesCard(examData);
+        midTermExamGrid.append(card);
+      }
+
+      // Add Final Exam cards to the container
+      for (const examData of finalExamData) {
+        const card = createSemesterGradesCard(examData);
+        finalExamGrid.append(card);
+      }
+
+      // Add Total Grade cards to the container
+      for (const tData of totalData) {
+        const card = createSemesterGradesCard(tData);
+        totalGrid.append(card);
+      }
+    });
+  </script>
+
+
+
+  <script>
+    // Check if the user data is present in sessionStorage
+    const userDataa = sessionStorage.getItem('user');
+    // If user data is not present, redirect to index.html
+    if (!userDataa) {
+      window.location.href = 'index.html';
+    } else {
+      const user = JSON.parse(sessionStorage.getItem('user'));
+      document.getElementById('userName').textContent = user.name;
+      document.getElementById('userPhoto').src = user.photo;
+    }
+  </script>
+
+
+
+
+
+
+  <script>
+
+    const userData = JSON.parse(sessionStorage.user);
+    // Access the stdnumber property
+    var sid = userData.stdnumber;
+
+    $(document).ready(function () {
+      $.ajax({
+        url: 'api.php',
+        method: 'POST',
+        data: {
+          studentId: sid,
+          courseId: sessionStorage.getItem('courseToLearn'),
+          action: 'fetchGrades',
+        },
+        success: function (res) {
+          response = JSON.parse(res);
+          console.log('GRADES ARE: ', response);
+          var mdata = {
+            accuracy: response.accuracy,
+            promptEfficiency: response.promptEfficiency,
+            timeEfficiency: response.timeEfficiency,
+            total: response.total
+          };
+          console.log('MDATA: ', mdata);
+          console.log('accuracy: ', mdata.accuracy);
+          populateDashboard(mdata);
+
+          var tdata = {
+            topics: response.topics,
+            scores: response.scores
+          };
+          console.log('TDATA: ', tdata)
+          populateProgressBars(tdata);
+
+          sessionStorage.setItem('grades', JSON.stringify(response));
+        },
+        error: function () {
+          console.error('Failed to fetch grades from the server.');
+        }
+      });
+
+      function populateDashboard(data) {
+        $('#accuracyScore').text(`Score: ${data.accuracy}%`);
+        $('#promptEfficiencyScore').text(`Score: ${data.promptEfficiency}%`);
+        $('#timeEfficiencyScore').text(`Score: ${data.timeEfficiency}%`);
+        $('#totalGradeScore').text(`Score: ${data.total}%`);
+      }
+
+      function populateProgressBars(data) {
+        const progressBarsContainer = $('#progressBarsContainer');
+        const { topics, scores } = data;
+
+        for (let i = 0; i < topics.length; i++) {
+          const progressBar = createProgressBar(topics[i], scores[i]);
+          progressBarsContainer.append(progressBar);
+        }
+      }
+
+      function createProgressBar(label, percentage) {
+        const progressBar = $('<div>').addClass('progress-bar');
+        const progressBarLabel = $('<div>').addClass('progress-bar-label').text(label);
+        const progressBarFill = $('<div>').addClass('progress-bar-fill').css('width', `${percentage}%`);
+        const progressBarPercentage = $('<div>').addClass('progress-bar-percentage').text(`${percentage}%`);
+
+        progressBar.append(progressBarLabel, progressBarFill, progressBarPercentage);
+        return progressBar;
+      }
+    });
+  </script>
+
+  <script>
+
+    // Retrieve the studentId from the userData
+    const studentId = userData.stdnumber;
+
+    // Function to fetch and display the course list
+    function fetchCoursesC(studentId) {
+      $.ajax({
+        url: 'api.php',
+        method: 'POST',
+        data: { action: 'fetchCourses', studentId: studentId },
+        //dataType: 'json',
+        success: function (response) {
+          console.log('COURSES FETCHED SUCCESSFULY', response);
+          displayCourseList(response);
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.error('Failed to fetch courses:', errorThrown);
+        }
+      });
+    }
+
+    // Function to display the course list
+    function displayCourseList(courses) {
+      const courseListContainer = $('#courseList');
+      courseListContainer.empty();
+
+      courses.forEach(course => {
+        const listItem = $('<div class="cardc"></div>');
+
+        const icon = $('<i class="fa fa-book" style="font-size:50px; margin-right:10px; color:gold;"></i>');
+        const name = $('<span class="course-name"></span>').text(course.name);
+        const checkbox = $('<input type="checkbox" class="subscription-checkbox">')
+          .attr('data-course-id', course.id)
+          .attr('data-student-id', studentId);
+
+        if (course.status === 'Subscribed') {
+          checkbox.prop('checked', true);
+        }
+
+        const cardBody = $('<div class="cardc-body"></div>')
+          .append(icon)
+          .append(name)
+          .append($('<div class="checkbox-container"></div>').append(checkbox));
+
+        listItem.append(cardBody);
+        courseListContainer.append(listItem);
+      });
+
+      // Attach event listener to the checkboxes
+      $('.subscription-checkbox').on('change', function () {
+        const courseId = $(this).data('course-id');
+        const studentId = $(this).data('student-id');
+        const isChecked = $(this).prop('checked');
+
+        if (isChecked) {
+          subscribeToCourse(courseId, studentId);
+        } else {
+          unsubscribeFromCourse(courseId, studentId);
+        }
+      });
+    }
+
+    // Function to subscribe to a course
+    function subscribeToCourse(courseId, studentId) {
+      $.ajax({
+        url: 'api.php',
+        method: 'POST',
+        data: { action: 'subscribeToCourse', studentId: studentId, courseId: courseId },
+        //dataType: 'json',
+        success: function (response) {
+
+          console.log('Subscribed to course:', response);
+          window.location.href = 'home.html';
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.error('Failed to subscribe to course:', errorThrown);
+        }
+      });
+    }
+
+    // Function to unsubscribe from a course
+    function unsubscribeFromCourse(courseId, studentId) {
+      $.ajax({
+        url: 'api.php',
+        method: 'POST',
+        data: { action: 'unsubscribeFromCourse', studentId: studentId, courseId: courseId },
+        //dataType: 'json',
+        success: function (response) {
+
+          console.log('Unsubscribed from course:', response);
+          window.location.href = 'home.html';
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.error('Failed to unsubscribe from course:', errorThrown);
+        }
+      });
+    }
+
+    // Call the fetchCourses function to populate the course list on page load
+    fetchCoursesC(studentId);
+
+  </script>
+
+  <script>
+    const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+    function createTimetable() {
+      const timetableContainer = document.getElementById("timetable");
+
+      const timetable = document.createElement("div");
+      timetable.className = "timetable";
+
+      daysOfWeek.forEach(day => {
+        const dayCard = document.createElement("div");
+        dayCard.className = "day-card";
+
+        const cardContent = document.createElement("div");
+        cardContent.className = "day-card-content";
+
+        const icon = document.createElement("i");
+        icon.className = "fa fa-calendar";
+
+        const dayName = document.createElement("span");
+        dayName.textContent = day;
+
+        const viewButton = document.createElement("button");
+        viewButton.textContent = "View";
+
+        cardContent.appendChild(icon);
+        cardContent.appendChild(dayName);
+        cardContent.appendChild(viewButton);
+        dayCard.appendChild(cardContent);
+
+        const taskList = document.createElement("div");
+        taskList.className = "day-card-tasks";
+
+        // Sample tasks for demonstration
+        const tasks = [
+          { name: "Task 1", time: "9:00 AM" },
+          { name: "Task 2", time: "11:00 AM" },
+          { name: "Task 3", time: "2:00 PM" },
+        ];
+
+        tasks.forEach(task => {
+          const taskItem = document.createElement("div");
+          taskItem.className = "task-item";
+
+          const taskLabel = document.createElement("label");
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+
+          const taskName = document.createElement("span");
+          taskName.textContent = task.name;
+
+          const taskTime = document.createElement("span");
+          taskTime.textContent = task.time;
+
+          const deleteButton = document.createElement("button");
+          deleteButton.textContent = "Delete";
+
+          taskItem.appendChild(taskName);
+          taskItem.appendChild(taskTime);
+          taskItem.appendChild(taskLabel);
+          taskLabel.appendChild(checkbox);
+          taskItem.appendChild(deleteButton);
+          taskList.appendChild(taskItem);
+        });
+
+        dayCard.appendChild(taskList);
+        timetable.appendChild(dayCard);
+
+        // Toggle task list visibility on view button click
+        viewButton.addEventListener("click", () => {
+          taskList.classList.toggle("active");
+        });
+      });
+
+      timetableContainer.appendChild(timetable);
+    }
+
+    // Call the function to create the timetable
+    createTimetable();
+  </script>
+
+
+  <script>
+    // Sample data for demonstration purposes
+    const messages = [
+      { id: 1, from: "fadi.alturjman@neu.edu.tr", subject: "Lecture Rescheduled", body: "Next week's lecture has been rescheduled to 25/11/2023 at 14:00." },
+      { id: 2, from: "fadi.alturjman@neu.edu.tr", subject: "New video uploaded", body: "A new video has been uploaded for Lecture 2, C004: Introduction to Robotics." },
+    ];
+
+    // Function to display messages based on the selected tab
+    function showTab(tabName) {
+      // Get the content element where messages will be displayed
+      const content = document.getElementById('content');
+
+      // Filter messages based on the selected tab and display them
+      const filteredMessages = messages.filter((message) => {
+        if (tabName === "Unread") return false; // For the sake of this mock scenario, we don't have unread messages
+        if (tabName === "Inbox") return true; // Display all messages for the Inbox tab
+        if (tabName === "Sent") return message.from === "sender@example.com";
+        if (tabName === "Spam") return false; // For the sake of this mock scenario, we don't have spam messages
+      });
+
+      // Render the list of messages in the content element
+      content.innerHTML = `<ul>${filteredMessages.map(message => `<li onclick="showMessage('${message.id}')">${message.subject}</li>`).join('')}</ul>`;
+    }
+
+    // Function to display the full message card
+    function showMessage(messageId) {
+      const message = messages.find(message => message.id === parseInt(messageId));
+      const messageCard = document.getElementById('messageCard');
+      cancelCreateMessage();
+
+      messageCard.innerHTML = `
+  <h2>${message.subject}</h2>
+  <p>From: ${message.from}</p>
+  <p>${message.body}</p>
+  <button class="close-btnM" onclick="hideMessageCard()">Close</button>
+`;
+
+      messageCard.style.display = "block";
+    }
+
+    // Function to hide the full message card
+    function hideMessageCard() {
+      const messageCard = document.getElementById('messageCard');
+      messageCard.style.display = "none";
+    }
+
+    // Function to show the create message card
+    function showCreateMessageCard() {
+      const createMessageCard = document.getElementById('createMessageCard');
+      createMessageCard.style.display = "block";
+      hideMessageCard();
+    }
+
+    // Function to hide the create message card and reset the form
+    function cancelCreateMessage() {
+      const createMessageCard = document.getElementById('createMessageCard');
+      createMessageCard.style.display = "none";
+      document.getElementById('createMessageForm').reset();
+    }
+
+    // Function to handle sending the new message
+    function sendMessage() {
+      const to = document.getElementById('to').value;
+      const subject = document.getElementById('subject').value;
+      const messageBody = document.getElementById('message').value;
+
+      // Create a new message object
+      const newMessage = {
+        id: messages.length + 1,
+        from: "sender@example.com", // Assuming the sender is always the same in this mock scenario
+        subject: subject,
+        body: messageBody,
+      };
+
+      // Add the new message to the messages array
+      messages.push(newMessage);
+
+      // Hide the create message card and reset the form
+      cancelCreateMessage();
+
+      // Refresh the message list based on the active tab
+      const activeTab = document.querySelector('.tab-btnM.active');
+      showTab(activeTab.innerText);
+    }
+
+
+  </script>
+
+
+  <script>
+    sendIcon.addEventListener('click', function () {
+      console.log('send icon clicked');
+    });
+  </script>
+
+
+<script>
+ $(document).ready(function() {
+  // Get the API key status and preview elements
+  var apiKeyStatus = $('#api-key-status');
+  var apiKeyPreview = $('#api-key-preview');
+
+  // Retrieve the user data from session storage
+  var userData = JSON.parse(sessionStorage.getItem('user'));
+  var userId = userData.uid;
+
+  // Function to update the API key status and preview
+  function updateApiKeyStatus(apiKey) {
+    if (apiKey) {
+      apiKeyStatus.text('Your API key is Set');
+      apiKeyPreview.text(apiKey.substr(0, 10) + ' ... ' + apiKey.substr(40,51));
+      sessionStorage.setItem('token',apiKey);
+    } else {
+      apiKeyStatus.text('You have not set an API key yet');
+      apiKeyPreview.text('');
+    }
+  }
+
+  // Retrieve the API key status and preview from the server
+  $.ajax({
+    url: 'api.php',
+    type: 'POST',
+    dataType: 'json',
+    data: { action: 'getAPIKey', userId: userId },
+    success: function(response) {
+      var apiKey = response.apiKey;
+      updateApiKeyStatus(apiKey);
+
+      // Set the input field value to the retrieved API key
+      $('#api-key-input').val('');
+    },
+    error: function() {
+      console.log('Error occurred during API key retrieval.');
+    }
+  });
+
+  // Handle form submission
+  $('#api-key-form').submit(function(event) {
+    event.preventDefault();
+
+    // Get the entered API key
+    var apiKey = $('#api-key-input').val();
+
+    // Regular expression to validate the API key format
+    var apiKeyRegex = /^sk-[a-zA-Z0-9]{48}$/;
+
+    // Check if the entered API key matches the expected format
+    if (!apiKeyRegex.test(apiKey)) {
+      alert('Invalid API key format. Please enter a valid API key starting with "sk-" and consisting of 51 characters made up of numbers, lowercase and uppercase letters only.');
+      return;
+    }
+
+    // Send the API key to the server for saving
+    $.ajax({
+      url: 'api.php',
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        action: 'saveAPIKey',
+        apiKey: apiKey,
+        userId: userId
+      },
+      success: function(response) {
+        if (response.success) {
+          updateApiKeyStatus(apiKey);
+        } else {
+          alert('Failed to save API key. Please try again.');
+        }
+      },
+      error: function() {
+        console.log('Error occurred during API key saving.');
+      }
+    });
+  });
+
+
+
+});
+
+
+$(document).ready(function() {
+  // Get the styled card element
+  var apiKeyInstructionsCard = $('#api-key-instructions-card');
+
+  // Handle click event of the "Find out how to get one" link
+  $('#get-api-key-link').click(function(event) {
+    event.preventDefault();
+    apiKeyInstructionsCard.show();
+  });
+
+  // Hide the styled card by default
+  apiKeyInstructionsCard.hide();
+});
+</script>
+</body>
+
+</html>

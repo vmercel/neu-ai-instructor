@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="parsed"><h1>PARSED RESPONSE APPEARS HERE</h1></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Example raw response from GPT API
+  const rawText = `
+  {
+    "text": "This is a sample paragraph. It contains some important information.",
+    "equation": "E = mc^2",
+    "code": "```cpp\\n#include <iostream>\\n\\nint main() {\\n  for (int i = 0; i < 10; i++) {\\n    std::cout << i << ' ';\\n  }\\n  return 0;\\n}\\n```"
+  }
+  `;
+
+  // Function to parse and display the response
+  function parseAndDisplayResponse(rawText, divId) {
+    const parsedResponse = JSON.parse(rawText);
+    const div = document.getElementById(divId);
+
+    for (const key in parsedResponse) {
+      if (parsedResponse.hasOwnProperty(key)) {
+        const value = parsedResponse[key];
+
+        let element;
+        if (typeof value === 'string') {
+          if (key === 'code') {
+            element = document.createElement('code');
+            element.innerHTML = value;
+            hljs.highlightBlock(element);
+          } else {
+            element = document.createElement('p');
+            element.innerText = value;
+          }
+        } else if (typeof value === 'object') {
+          element = document.createElement('pre');
+          element.innerHTML = value;
+          hljs.highlightBlock(element);
+        }
+
+        div.appendChild(element);
+      }
+    }
+  }
+
+  // Call the function to display the parsed response
+  const divId = 'parsed';
+  parseAndDisplayResponse(rawText, divId);
+});
+
+</script>
+</body>
+</html>

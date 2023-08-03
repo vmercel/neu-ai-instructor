@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Template</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <style>
+    /* Custom CSS for the page */
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: bold;
+    }
+
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      font-size: 16px;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    footer ul li i {
+      margin-right: 10px;
+    }
+
+    .footer-heading {
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header Row -->
+<header class="container-fluid bg-primary text-white">
+  <div class="row">
+    <div class="col-6">
+      <img src="assets/RCAIoT_logo.png" alt="Company Logo" style="width:300px">
+    </div>
+    <div class="col-6 text-right">
+      <div class="row">
+        <div class="col-6">
+          <!-- Adding inline styles for user photo -->
+          <!-- <img src="uploads/einstein.jpg" alt="User Photo" style="float: right; width: 80px; height: 80px; border-radius: 50%;"> -->
+        </div>
+        <div class="col-6">
+          <!-- <p>Logged in as</p>
+          <p>Mercel</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+  <!-- Main Section Row -->
+<!-- Main Section Row -->
+<main class="container mt-3">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-2" style="background-color:whitesmoke;">
+
+      </div>
+  
+      <!-- Chat Area -->
+      <div class="col-6">
+
+
+        <div class="tab-contents" id="classroom-content">
+          <!-- Content for Classroom tab -->
+          <div class="containerr">
+            <div class="row justify-content-center">
+              <div class="col-md-6">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link" id="login-tab" data-toggle="tab" href="#login">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" id="signup-tab" data-toggle="tab" href="#signup">Signup</a>
+                  </li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade" id="login">
+                    <h3>Login</h3>
+                    <form id="loginForm">
+                        <div class="form-group">
+                          <label for="loginEmail">Email:</label>
+                          <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="loginPassword">Password:</label>
+                          <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                      </form>
+                  </div>
+                  <div class="tab-pane fade show active" id="signup">
+                    <h3>Signup</h3>
+                    <form id="signupForm" enctype="multipart/form-data">
+                        <div class="form-group">
+                          <label for="signupName">Name:</label>
+                          <input type="text" class="form-control" id="signupName" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="signupEmail">Email:</label>
+                          <input type="email" class="form-control" id="signupEmail" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="signupPhone">Phone:</label>
+                          <input type="text" class="form-control" id="signupPhone" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="signupStdNumber">Student Number:</label>
+                          <input type="text" class="form-control" id="signupStdNumber" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="signupAddress">Address:</label>
+                          <input type="text" class="form-control" id="signupAddress" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="signupDepartment">Department:</label>
+                          <input type="text" class="form-control" id="signupDepartment" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="signupPassword">Password:</label>
+                          <input type="password" class="form-control" id="signupPassword" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="signupPhoto">Profile Photo:</label>
+                          <input type="file" class="form-control-file" id="signupPhoto" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Signup</button>
+                      </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        
+      </div>
+  
+      <!-- Instructions -->
+      <div class="col-4" style="background-color: white;">
+        <!-- <p>Instructions</p> -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Row -->
+  <footer class="container-fluid mt-3" style="background-color: beige;">
+    <div class="row">
+      <div class="col-4">
+        <p><img src="assets/AIRI_logo.png" alt="company logo" style="width:200px"></p>
+        <p><img src="assets/RCAIoT_logo.png" alt="company logo" style="width:300px"></p>
+        <p>Research Center for AI and IoT<br>
+        We Specialize in designing AI-based solutions for smart societies</p>
+      </div>
+      <div class="col-4">
+        <p class="footer-heading">Contact us</p>
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i> Address of the company</li>
+          <li><i class="fas fa-phone"></i> Phone number</li>
+        </ul>
+      </div>
+      <div class="col-4">
+        <p class="footer-heading">Services</p>
+        <ul>
+          <li><i class="fas fa-graduation-cap"></i> Education</li>
+          <li><i class="fas fa-medkit"></i> Healthcare</li>
+          <li><i class="fas fa-chalkboard-teacher"></i> Training</li>
+          <li><i class="fas fa-handshake"></i> Consultancy</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 
+  <script>
+    $(document).ready(function () {
+
+        $('#loginForm').submit(function (event) {
+        event.preventDefault();
+        var email = $('#loginEmail').val();
+        var password = $('#loginPassword').val();
+        login(email, password);
+      });
+
+
+
+      function login(email, password) {
+        $.ajax({
+          url: 'api.php',
+          type: 'POST',
+          data: {
+            action: 'login',
+            email: email,
+            password: password
+          },
+          success: function (response) {
+            sessionStorage.setItem('user', response);
+            window.location.href = 'home.html';
+          },
+          error: function (xhr, status, error) {
+            console.error(xhr.responseText);
+          }
+        });
+      }
+
+
+
+      function signup(name, email, phone, stdNumber, address, department, password, photo) {
+        var formData = new FormData();
+        formData.append('action', 'signup');
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('phone', phone);
+        formData.append('stdnumber', stdNumber);
+        formData.append('address', address);
+        formData.append('department', department);
+        formData.append('password', password);
+        formData.append('photo', photo);
+
+        $.ajax({
+          url: 'api.php',
+          type: 'POST',
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function (response) {
+            // console.log('RESPONSE', response);
+            // var responseObject = JSON.parse(response);
+            // var user = responseObject.data;
+            // var userO = JSON.parse(user);
+            sessionStorage.setItem('user', response);
+            window.location.href = 'home.html';
+          },
+          error: function (xhr, status, error) {
+            console.error(xhr.responseText);
+          }
+        });
+
+      }
+    
+      $('#signupForm').submit(function (event) {
+        event.preventDefault();
+        var name = $('#signupName').val();
+        var email = $('#signupEmail').val();
+        var phone = $('#signupPhone').val();
+        var stdNumber = $('#signupStdNumber').val();
+        var address = $('#signupAddress').val();
+        var department = $('#signupDepartment').val();
+        var password = $('#signupPassword').val();
+        var photo = $('#signupPhoto')[0].files[0];
+        signup(name, email, phone, stdNumber, address, department, password, photo);
+      });
+
+    });
+  </script>
+</body>
+</html>
