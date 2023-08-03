@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // FETCH INSTRUCTIONS
 function fetchInstructions(mtopicId, mcourseId) {
     $.ajax({
-      url: 'api.php',
+      url: 'https://neu-ai-instructor.aiiot.website/api.php',
       method: 'POST',
       data: { topicId: mtopicId, courseId: mcourseId, action: 'fetchInstructions' },
       //dataType: 'json',
@@ -615,7 +615,7 @@ function displayCurrentInstruction() {
 
                 // Send the data via jQuery Ajax
                 $.ajax({
-                    url: 'api.php',
+                    url: 'https://neu-ai-instructor.aiiot.website/api.php',
                     method: "POST",
                     data: toDispatch,
                     success: function(response) {
@@ -743,7 +743,7 @@ function displayCurrentInstruction() {
 
               // Send the data via jQuery Ajax
               $.ajax({
-                  url: 'api.php',
+                  url: 'https://neu-ai-instructor.aiiot.website/api.php',
                   method: "POST",
                   data: toDispatch,
                   success: function(response) {
@@ -982,7 +982,7 @@ function destroySubmitButton() {
 
    function fetchCoursesForUser(sid) {
        $.ajax({
-           url: 'api.php',
+           url: 'https://neu-ai-instructor.aiiot.website/api.php',
            method: 'POST',
            data: { studentId: sid, action: 'fetchCoursesForUser'  },
            dataType: 'json',
@@ -1015,7 +1015,7 @@ function destroySubmitButton() {
 //FETCH TOPICS
    function fetchTopics(courseId) {
    $.ajax({
-       url: 'api.php',
+       url: 'https://neu-ai-instructor.aiiot.website/api.php',
        method: 'POST',
        data: { action: 'fetchTopicsForCourse', courseId: courseId },
        dataType: 'json',
@@ -1046,7 +1046,7 @@ function destroySubmitButton() {
 
    function fetchCoursesForUser(sid, cdId) {
        $.ajax({
-           url: 'api.php',
+           url: 'https://neu-ai-instructor.aiiot.website/api.php',
            method: 'POST',
            data: { studentId: sid, action: 'fetchCoursesForUser'  },
            dataType: 'json',
@@ -1079,7 +1079,7 @@ function destroySubmitButton() {
 //FETCH TOPICS
    function fetchTopics(courseId, tdId) {
    $.ajax({
-       url: 'api.php',
+       url: 'https://neu-ai-instructor.aiiot.website/api.php',
        method: 'POST',
        data: { action: 'fetchTopicsForCourse', courseId: courseId },
        dataType: 'json',
